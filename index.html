@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf8">
+        <title>WebSocket.IO</title>
+    </head>
+    <body>
+        <button id="btn">送信</button>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const btn = document.getElementById('btn');
+        const socket = io();
+
+        btn.addEventListener('click', (e)=>{
+            socket.emit('chat message', 'test');
+        });
+
+        socket.on('push', msg=>{
+            console.log(msg);
+        });
+    </script>
+    </body>
+</html>
