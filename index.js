@@ -6,6 +6,10 @@ app.get('/', function(req, res){
     res.sendFile(__dirname + '/index.html');
 });
 
+app.get('/ajax', function(req, res){
+    res.json({status: 200, message: 'ok'});
+});
+
 io.on('connection', socket=>{
     console.log('接続しました。');
 

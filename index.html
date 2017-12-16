@@ -5,8 +5,13 @@
         <title>WebSocket.IO</title>
     </head>
     <body>
-        <button id="btn">送信</button>
+        <button id="btn">送信</button><br />
+        <button id="ajax">APIを叩く</button>
     <script src="/socket.io/socket.io.js"></script>
+    <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
     <script>
         const btn = document.getElementById('btn');
         const socket = io();
@@ -17,6 +22,25 @@
 
         socket.on('push', msg=>{
             console.log(msg);
+        });
+
+
+        const ajaxBtn = document.getElementById('ajax');
+        ajaxBtn.addEventListener('click', (e) => {
+            // 非同期通信開始
+            $.ajax('http://localhost:3000/ajax',
+                {
+                    method: 'GET',
+                    dataType: 'json'
+                }
+            ).done(function(data) {
+                console.log(data);
+                alert( "success" );
+            }).fail(function() {
+                alert( "error" );
+            }).always(function() {
+                alert( "complete" );
+            });
         });
     </script>
     </body>
