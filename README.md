@@ -1,2 +1,3 @@
 # websocketTest
-WebSocketテストレポジトリ ... JavaScript
+
+WebSocket APIを使ってみるリポジトリ
